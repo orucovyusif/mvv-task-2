@@ -1,0 +1,41 @@
+﻿@using Mamba_mvc.Models;
+
+
+@model List<Store>
+@{
+    int count = 0;
+}
+<h1>    
+
+    Store
+    <a class="btn btn-primary" asp-action="Create">create</a>
+</h1>
+<div class="container">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description </th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <th scope="row">@count</th>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td><img src="~/Upload/Store/@item.Imgurl" /></td>
+                    <td>
+                        <a class="btn btn-secondary" asp-action="Update" asp-route-id=@item.Id>Update</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id=@item.Id>Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
